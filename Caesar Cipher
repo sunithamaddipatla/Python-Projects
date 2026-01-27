@@ -1,0 +1,80 @@
+import art
+from art import logo
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+print(logo)
+def encrypt(original_text, shift_amount):
+    shifted_index = 0
+    index_list = []
+    encrypted_word = ''
+    for char in original_text:
+        original_index = 0
+        for letter in alphabet:
+            original_index += 1
+            if char == letter:
+                index_list.append(original_index - 1)
+    shifted_index_list = []
+    for index in index_list:
+        shifted_index = index + shift_amount
+        if shifted_index >= 25:
+            shifted_index %= 26
+            shifted_index_list.append(shifted_index)
+        else:
+            shifted_index_list.append(shifted_index)
+    j = 0
+    for char in original_text:
+        if char in alphabet:
+            j += 1
+            encrypted_word += alphabet[shifted_index_list[j - 1]]
+
+        else:
+            encrypted_word += char
+
+
+    print(f"Here is the encoded result: {encrypted_word}\n")
+
+def decrypt(encoded_text, shift_amount):
+    shifted_index = 0
+    index_list = []
+    decrypted_word = ''
+    for char in encoded_text:
+        encoded_index = 0
+        for letter in alphabet:
+            encoded_index += 1
+            if char == letter:
+                index_list.append(encoded_index - 1)
+    decoded_index_list = []
+    for index in index_list:
+        shifted_index = index - shift_amount
+        if shifted_index < 0 or shifted_index >= 25:
+            shifted_index %= 26
+            decoded_index_list.append(shifted_index)
+        else:
+            decoded_index_list.append(shifted_index)
+    j = 0
+    for char in encoded_text:
+        if char in alphabet:
+            j += 1
+            decrypted_word += alphabet[decoded_index_list[j - 1]]
+
+        else:
+            decrypted_word += char
+    print(f"Here is the decoded result: {decrypted_word}\n")
+
+def caesar():
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    if direction == 'encode':
+        text = input("Type your message:\n").lower()
+        shift = int(input("Type the shift number:\n"))
+        encrypt(text, shift)
+    elif direction == 'decode':
+        text = input("Type your message:\n").lower()
+        shift = int(input("Type the shift number:\n"))
+        decrypt(text, shift)
+
+caesar()
+user_q = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
+if user_q == 'yes':
+    caesar()
+else:
+    print("Goodbye")
