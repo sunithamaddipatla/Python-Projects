@@ -1,0 +1,169 @@
+import art
+import random
+from art import logo
+print(logo)
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11, 11, 11, 11, 11]
+my_cards = []
+computer_cards = []
+my_cards.append(random.choice(cards))
+my_cards.append(random.choice(cards))
+computer_cards.append(random.choice(cards))
+computer_cards.append(random.choice(cards))
+count1 = 0
+count2 = 0
+if sum(computer_cards) == 21:
+    print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+    print(f"Computer's final hand: {computer_cards}, final score: {0}")
+    print("Computer wins! Blackjack!")
+    print("\n\n")
+elif sum(my_cards) == 21:
+    print(f"Your final hand: {my_cards}, final score: {0}")
+    print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+    print("User wins! Blackjack!")
+    print("\n\n")
+else:
+    print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+    print(f"Computer's first card: {computer_cards[0]}")
+    user_answer = input("Type 'y' to get another card, type 'n' to pass: ")
+    while user_answer != 'n':
+        my_cards.append(random.choice(cards))
+        print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+        print(f"Computer's first card: {computer_cards[0]}")
+        if sum(my_cards) > 21 and 11 in my_cards:
+            my_cards.remove(11)
+            my_cards.append(1)
+            print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+            print(f"Computer's first card: {computer_cards[0]}")
+            print("\n\n")
+        elif sum(computer_cards) > 21 and 11 in computer_cards:
+            my_cards.remove(11)
+            my_cards.append(1)
+            print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+            print(f"Computer's first card: {computer_cards[0]}")
+            print("\n\n")
+        elif sum(computer_cards) > 21:
+            my_final_score = sum(my_cards)
+            computer_final_score = sum(computer_cards)
+            print(f"Your final hand: {my_cards}, final score: {my_final_score}")
+            print(f"Computer's final hand: {computer_cards}, final score: {computer_final_score}")
+            print("Computer went over!")
+            print("\n\n")
+            break
+        elif sum(my_cards) > 21:
+            my_final_score = sum(my_cards)
+            computer_final_score = sum(computer_cards)
+            print(f"Your final hand: {my_cards}, final score: {my_final_score}")
+            print(f"Computer's final hand: {computer_cards}, final score: {computer_final_score}")
+            print("You went over! You lose!")
+            print("\n\n")
+            break
+        user_answer = input("Type 'y' to get another card, type 'n' to pass: ")
+    if user_answer == 'n':
+        while sum(computer_cards) < 17:
+            computer_cards.append(random.choice(cards))
+        if sum(computer_cards) > 21:
+            print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+            print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+            print("Computer went over! You win!")
+            print("\n\n")
+        elif sum(computer_cards) > sum(my_cards):
+            print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+            print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+            print("Computer wins!")
+            print("\n\n")
+        elif sum(computer_cards) < sum(my_cards):
+            print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+            print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+            print("User wins!")
+            print("\n\n")
+        else:
+            print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+            print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+            print("It was a draw!")
+            print("\n\n")
+again = input("Do you want to play again? Type 'y' or 'n': ")
+while again != "n":
+    print(logo)
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11, 11, 11, 11, 11]
+    my_cards = []
+    computer_cards = []
+    my_cards.append(random.choice(cards))
+    my_cards.append(random.choice(cards))
+    computer_cards.append(random.choice(cards))
+    computer_cards.append(random.choice(cards))
+    count1 = 0
+    count2 = 0
+    if sum(computer_cards) == 21:
+        print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+        print(f"Computer's final hand: {computer_cards}, final score: {0}")
+        print("Computer wins! Blackjack!")
+        print("\n\n")
+    elif sum(my_cards) == 21:
+        print(f"Your final hand: {my_cards}, final score: {0}")
+        print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+        print("User wins! Blackjack!")
+        print("\n\n")
+    else:
+
+        print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+        print(f"Computer's first card: {computer_cards[0]}")
+        user_answer = input("Type 'y' to get another card, type 'n' to pass: ")
+        while user_answer != 'n':
+            my_cards.append(random.choice(cards))
+            print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+            print(f"Computer's first card: {computer_cards[0]}")
+            if sum(my_cards) > 21 and 11 in my_cards:
+                my_cards.remove(11)
+                my_cards.append(1)
+                print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+                print(f"Computer's first card: {computer_cards[0]}")
+                print("\n\n")
+            elif sum(computer_cards) > 21 and 11 in computer_cards:
+                my_cards.remove(11)
+                my_cards.append(1)
+                print(f"Your cards: {my_cards}, current score: {sum(my_cards)}")
+                print(f"Computer's first card: {computer_cards[0]}")
+                print("\n\n")
+            elif sum(computer_cards) > 21:
+                my_final_score = sum(my_cards)
+                computer_final_score = sum(computer_cards)
+                print(f"Your final hand: {my_cards}, final score: {my_final_score}")
+                print(f"Computer's final hand: {computer_cards}, final score: {computer_final_score}")
+                print("Computer went over!")
+                print("\n\n")
+                break
+            elif sum(my_cards) > 21:
+                my_final_score = sum(my_cards)
+                computer_final_score = sum(computer_cards)
+                print(f"Your final hand: {my_cards}, final score: {my_final_score}")
+                print(f"Computer's final hand: {computer_cards}, final score: {computer_final_score}")
+                print("You went over! You lose!")
+                print("\n\n")
+                break
+            user_answer = input("Type 'y' to get another card, type 'n' to pass: ")
+        if user_answer == 'n':
+            while sum(computer_cards) < 17:
+                computer_cards.append(random.choice(cards))
+            if sum(computer_cards) > 21:
+                print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+                print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+                print("Computer went over! You win!")
+                print("\n\n")
+            elif sum(computer_cards) > sum(my_cards):
+                print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+                print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+                print("Computer wins!")
+                print("\n\n")
+            elif sum(computer_cards) < sum(my_cards):
+                print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+                print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+                print("User wins!")
+                print("\n\n")
+            else:
+                print(f"Your final hand: {my_cards}, final score: {sum(my_cards)}")
+                print(f"Computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+                print("It was a draw!")
+                print("\n\n")
+    again = input("Do you want to play again? Type 'y' or 'n': ")
+if again == "n":
+    print("Goodbye!")
